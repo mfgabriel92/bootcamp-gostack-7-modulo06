@@ -1,11 +1,7 @@
 import React from 'react'
-import { StatusBar } from 'react-native'
+import Routes from './routes'
 import './config/reactotron'
 
-const App = () => (
-  <>
-    <StatusBar barStyle="light-content" />
-  </>
-)
+const App = () => <Routes />
 
 export default App
