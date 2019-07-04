@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { Keyboard } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { Container, Form, Input, Button } from './styles'
+import { Container, Form, Input, Button, List } from './styles'
 import Api from '../../service/api'
+import UserInfo from '../UserInfo'
 
 class Main extends Component {
   state = {
@@ -36,6 +37,7 @@ class Main extends Component {
       <Container>
         <Form>
           <Input
+            value={user}
             autoCorrect={false}
             autoCapitalize="none"
             placeholder="Add user"
@@ -47,6 +49,12 @@ class Main extends Component {
             <Icon name="add" size={18} color="#FFF" />
           </Button>
         </Form>
+
+        <List
+          data={users}
+          keyExtractor={u => u.id}
+          renderItem={({ item }) => <UserInfo user={item} />}
+        />
       </Container>
     )
   }

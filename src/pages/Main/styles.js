@@ -31,3 +31,8 @@ export const Button = styled(RectButton)`
   margin-left: 5px;
   padding: 0 12px;
 `
+export const List = styled.FlatList.attrs({
+  showsVerticalScrollIndicator: false,
+})`
+  margin-top: 30px;
+`
