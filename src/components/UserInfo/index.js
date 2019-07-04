@@ -22,8 +22,8 @@ class UserInfo extends Component {
     return (
       <User>
         <Avatar source={{ uri: user.avatar }} />
-        <Name>{user.name}</Name>
-        <Bio>{user.bio}</Bio>
+        <Name>{user.name || user.login}</Name>
+        <Bio>{user.bio || 'No bio'}</Bio>
         <ProfileButton onPress={() => this.handleNavigate(user)}>
           <ProfileButtonText>Profile</ProfileButtonText>
         </ProfileButton>
