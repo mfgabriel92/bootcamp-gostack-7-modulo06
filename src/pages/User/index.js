@@ -1,7 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const User = () => {
-  return <></>
+class User extends Component {
+  render() {
+    const { navigation } = this.props
+    const user = navigation.getParam('user')
+    return <></>
+  }
 }
 
 export default User

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withNavigation } from 'react-navigation'
 import {
   User,
   Avatar,
@@ -10,6 +11,11 @@ import {
 } from './styles'
 
 class UserInfo extends Component {
+  handleNavigate = user => {
+    const { navigation } = this.props
+    navigation.navigate('User', { user })
+  }
+
   render() {
     const { user } = this.props
 
@@ -18,7 +24,7 @@ class UserInfo extends Component {
         <Avatar source={{ uri: user.avatar }} />
         <Name>{user.name}</Name>
         <Bio>{user.bio}</Bio>
-        <ProfileButton onPress={() => {}}>
+        <ProfileButton onPress={() => this.handleNavigate(user)}>
           <ProfileButtonText>Profile</ProfileButtonText>
         </ProfileButton>
       </User>
@@ -30,4 +36,4 @@ UserInfo.propTypes = {
   user: PropTypes.shape().isRequired,
 }
 
-export default UserInfo
+export default withNavigation(UserInfo)

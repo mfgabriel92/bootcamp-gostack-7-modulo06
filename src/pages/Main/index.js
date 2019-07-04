@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-community/async-storage'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Container, Form, Input, Button, List } from './styles'
 import Api from '../../service/api'
-import UserInfo from '../UserInfo'
+import UserInfo from '../../components/UserInfo'
 
 class Main extends Component {
   state = {

@@ -1,6 +1,6 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation'
 import Main from './pages/Main/config'
-import User from './pages/User'
+import User from './pages/User/config'
 
 const Routes = createAppContainer(
   createStackNavigator(
