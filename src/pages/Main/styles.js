@@ -30,6 +30,7 @@ export const Button = styled(RectButton)`
   border-radius: 4px;
   margin-left: 5px;
   padding: 0 12px;
+  opacity: ${props => (props.loading ? 0.5 : 1)};
 `
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,

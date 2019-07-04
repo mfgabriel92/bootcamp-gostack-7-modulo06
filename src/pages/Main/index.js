@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Keyboard } from 'react-native'
+import { Keyboard, ActivityIndicator } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Container, Form, Input, Button, List } from './styles'
 import Api from '../../service/api'
@@ -9,10 +9,13 @@ class Main extends Component {
   state = {
     user: '',
     users: [],
+    loading: false,
   }
 
   handleOnSubmit = async () => {
     const { user, users } = this.state
+
+    this.setState({ loading: true })
 
     if (user !== '') {
       const response = await Api.get(`/users/${user}`)
@@ -24,14 +27,14 @@ class Main extends Component {
         avatar: response.data.avatar_url,
       }
 
-      this.setState({ users: [...users, data] })
+      this.setState({ users: [...users, data], loading: false })
     }
 
     Keyboard.dismiss()
   }
 
   render() {
-    const { user, users } = this.state
+    const { user, users, loading } = this.state
 
     return (
       <Container>
@@ -45,14 +48,18 @@ class Main extends Component {
             returnKeyType="send"
             onSubmitEditing={this.handleOnSubmit}
           />
-          <Button onPress={this.handleOnSubmit}>
-            <Icon name="add" size={18} color="#FFF" />
+          <Button onPress={this.handleOnSubmit} loading={loading}>
+            {loading ? (
+              <ActivityIndicator color="#FFF" />
+            ) : (
+              <Icon name="add" size={18} color="#FFF" />
+            )}
           </Button>
         </Form>
 
         <List
           data={users}
-          keyExtractor={u => u.id}
+          keyExtractor={u => String(u.id)}
           renderItem={({ item }) => <UserInfo user={item} />}
         />
       </Container>
