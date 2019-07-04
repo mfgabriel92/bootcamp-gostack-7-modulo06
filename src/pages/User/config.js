@@ -2,7 +2,7 @@ import User from './index'
 
 export default {
   screen: User,
-  navigationOptions: () => ({
-    title: 'User',
+  navigationOptions: ({ navigation }) => ({
+    title: navigation.getParam('user').name,
   }),
 }
